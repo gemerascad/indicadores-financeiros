@@ -43,18 +43,59 @@ const MES_ORDER = [
 
 export const MES_LIST = MES_ORDER;
 
-export const ALL_PAYMENTS: Payment[] = (rawData as RawPayment[]).map((r) => ({
-  responsavel: (r.r || "—").toUpperCase().trim(),
-  dataPagamento: r.dp ? new Date(r.dp + "T00:00:00") : null,
-  dataConfirmacao: r.dc ? new Date(r.dc + "T00:00:00") : null,
-  area: r.a || "—",
-  tipo: (r.t || "—").trim(),
-  valor: Number(r.v) || 0,
-  empresa: (r.e || "—").trim(),
-  status: (r.s || "—").trim(),
-  mes: (r.m || "").trim(),
-  emergencial: !!r.em,
-}));
+// --- Anonymization (dados fictícios para portfólio) ---
+const respMap = new Map<string, string>();
+const empMap = new Map<string, string>();
+const labelFor = (
+  raw: string,
+  map: Map<string, string>,
+  prefix: string,
+): string => {
+  const key = raw.trim().toUpperCase();
+  if (!key) return `${prefix} —`;
+  const existing = map.get(key);
+  if (existing) return existing;
+  const label = `${prefix} ${map.size + 1}`;
+  map.set(key, label);
+  return label;
+};
+
+// Hash determinístico simples para escalar valores sem expor números reais
+const hashStr = (s: string): number => {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h;
+};
+
+const scrambleValor = (v: number, seed: string): number => {
+  if (!v) return 0;
+  // fator entre 0.65 e 1.45
+  const f = 0.65 + (hashStr(seed) % 1000) / 1250;
+  const out = v * f;
+  return Math.round(out * 100) / 100;
+};
+
+export const ALL_PAYMENTS: Payment[] = (rawData as RawPayment[]).map((r, i) => {
+  const responsavel = labelFor(r.r || "", respMap, "Responsável");
+  const empresa = labelFor(r.e || "", empMap, "Empresa");
+  const seed = `${i}|${r.r}|${r.e}|${r.dp}|${r.v}`;
+  return {
+    responsavel,
+    dataPagamento: r.dp ? new Date(r.dp + "T00:00:00") : null,
+    dataConfirmacao: r.dc ? new Date(r.dc + "T00:00:00") : null,
+    area: r.a || "—",
+    tipo: (r.t || "—").trim(),
+    valor: scrambleValor(Number(r.v) || 0, seed),
+    empresa,
+    status: (r.s || "—").trim(),
+    mes: (r.m || "").trim(),
+    emergencial: !!r.em,
+  };
+});
+
 
 export const formatBRL = (n: number) =>
   n.toLocaleString("pt-BR", {
