@@ -140,7 +140,9 @@ function Dashboard() {
 
   const statusData = useMemo(
     () =>
-      groupSum(filtered, (p) => p.status).sort((a, b) => b.qtd - a.qtd),
+      groupSum(filtered, (p) => p.status)
+        .filter((d) => d.name === "OK" || d.name === "DEVOLVIDO")
+        .sort((a, b) => b.qtd - a.qtd),
     [filtered],
   );
 
