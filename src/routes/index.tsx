@@ -402,8 +402,8 @@ function Dashboard() {
 
         {/* Row: responsável + tipo */}
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <ChartCard title="Top responsáveis" subtitle="Por valor pago">
-            <ResponsiveContainer width="100%" height={Math.max(240, respData.length * 32)}>
+          <ChartCard title="Responsáveis" subtitle="Por valor pago e quantidade">
+            <ResponsiveContainer width="100%" height={Math.max(260, respData.length * 44)}>
               <BarChart
                 data={respData}
                 layout="vertical"
@@ -411,20 +411,31 @@ function Dashboard() {
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
                 <XAxis
+                  xAxisId="valor"
                   type="number"
                   stroke="var(--muted-foreground)"
                   fontSize={11}
                   tickFormatter={(v) => formatCompact(Number(v))}
+                />
+                <XAxis
+                  xAxisId="qtd"
+                  type="number"
+                  orientation="top"
+                  stroke="var(--muted-foreground)"
+                  fontSize={11}
+                  tickFormatter={(v) => formatInt(Number(v))}
                 />
                 <YAxis
                   type="category"
                   dataKey="name"
                   stroke="var(--muted-foreground)"
                   fontSize={11}
-                  width={90}
+                  width={110}
                 />
                 <Tooltip
-                  formatter={(v: number) => formatBRLFull(v)}
+                  formatter={(v: number, n) =>
+                    n === "Valor" ? formatBRLFull(v) : formatInt(v)
+                  }
                   contentStyle={{
                     background: "var(--popover)",
                     border: "1px solid var(--border)",
@@ -432,10 +443,61 @@ function Dashboard() {
                     fontSize: 12,
                   }}
                 />
-                <Bar dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[0]} />
+                <Legend wrapperStyle={{ fontSize: 12 }} />
+                <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[0]} />
+                <Bar xAxisId="qtd" dataKey="qtd" name="Quantidade" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[2]} />
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>
+
+          <ChartCard title="Tipos de pagamento" subtitle="Top 10 por valor e quantidade">
+            <ResponsiveContainer width="100%" height={Math.max(260, tipoData.length * 44)}>
+              <BarChart
+                data={tipoData}
+                layout="vertical"
+                margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
+                <XAxis
+                  xAxisId="valor"
+                  type="number"
+                  stroke="var(--muted-foreground)"
+                  fontSize={11}
+                  tickFormatter={(v) => formatCompact(Number(v))}
+                />
+                <XAxis
+                  xAxisId="qtd"
+                  type="number"
+                  orientation="top"
+                  stroke="var(--muted-foreground)"
+                  fontSize={11}
+                  tickFormatter={(v) => formatInt(Number(v))}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  stroke="var(--muted-foreground)"
+                  fontSize={11}
+                  width={150}
+                />
+                <Tooltip
+                  formatter={(v: number, n) =>
+                    n === "Valor" ? formatBRLFull(v) : formatInt(v)
+                  }
+                  contentStyle={{
+                    background: "var(--popover)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 8,
+                    fontSize: 12,
+                  }}
+                />
+                <Legend wrapperStyle={{ fontSize: 12 }} />
+                <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[3]} />
+                <Bar xAxisId="qtd" dataKey="qtd" name="Quantidade" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[2]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
 
           <ChartCard title="Tipos de pagamento" subtitle="Top 10 por valor">
             <ResponsiveContainer width="100%" height={Math.max(240, tipoData.length * 32)}>
