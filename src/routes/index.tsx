@@ -70,21 +70,21 @@ export const Route = createFileRoute("/")({
 });
 
 const STATUS_COLORS: Record<string, string> = {
-  OK: "hsl(152 60% 42%)",
-  DEVOLVIDO: "hsl(0 72% 55%)",
-  "GUIA DIVERGENTE": "hsl(38 92% 50%)",
-  "LOJA MIGRADA": "hsl(220 70% 55%)",
+  OK: "hsl(155 65% 42%)",
+  DEVOLVIDO: "hsl(350 55% 52%)",
+  "GUIA DIVERGENTE": "hsl(42 75% 52%)",
+  "LOJA MIGRADA": "hsl(165 50% 45%)",
 };
 
 const CHART_PALETTE = [
-  "hsl(220 70% 50%)",
-  "hsl(152 60% 42%)",
-  "hsl(38 92% 50%)",
-  "hsl(280 60% 55%)",
-  "hsl(0 72% 55%)",
-  "hsl(190 70% 45%)",
-  "hsl(48 95% 50%)",
-  "hsl(330 70% 55%)",
+  "hsl(155 60% 35%)",
+  "hsl(160 50% 55%)",
+  "hsl(42 50% 50%)",
+  "hsl(150 45% 25%)",
+  "hsl(170 55% 65%)",
+  "hsl(140 50% 30%)",
+  "hsl(45 60% 60%)",
+  "hsl(165 45% 45%)",
 ];
 
 function Dashboard() {
@@ -140,7 +140,9 @@ function Dashboard() {
 
   const statusData = useMemo(
     () =>
-      groupSum(filtered, (p) => p.status).sort((a, b) => b.qtd - a.qtd),
+      groupSum(filtered, (p) => p.status)
+        .filter((d) => d.name === "OK" || d.name === "DEVOLVIDO")
+        .sort((a, b) => b.qtd - a.qtd),
     [filtered],
   );
 
@@ -498,41 +500,6 @@ function Dashboard() {
             </ResponsiveContainer>
           </ChartCard>
 
-
-          <ChartCard title="Tipos de pagamento" subtitle="Top 10 por valor">
-            <ResponsiveContainer width="100%" height={Math.max(240, tipoData.length * 32)}>
-              <BarChart
-                data={tipoData}
-                layout="vertical"
-                margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
-                <XAxis
-                  type="number"
-                  stroke="var(--muted-foreground)"
-                  fontSize={11}
-                  tickFormatter={(v) => formatCompact(Number(v))}
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  stroke="var(--muted-foreground)"
-                  fontSize={11}
-                  width={150}
-                />
-                <Tooltip
-                  formatter={(v: number) => formatBRLFull(v)}
-                  contentStyle={{
-                    background: "var(--popover)",
-                    border: "1px solid var(--border)",
-                    borderRadius: 8,
-                    fontSize: 12,
-                  }}
-                />
-                <Bar dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[3]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartCard>
         </div>
 
         {/* Empresa */}
