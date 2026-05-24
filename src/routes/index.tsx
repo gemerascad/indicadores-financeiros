@@ -357,7 +357,7 @@ function Dashboard() {
                   dataKey="valor"
                   name="Valor"
                   yAxisId="left"
-                  stroke={CHART_PALETTE[0]}
+                  stroke={CHART_PALETTE[3]}
                   strokeWidth={2.5}
                   dot={{ r: 3 }}
                   activeDot={{ r: 5 }}
@@ -455,7 +455,7 @@ function Dashboard() {
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[0]} />
+                <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[3]} />
                 <Bar xAxisId="qtd" dataKey="qtd" name="Quantidade" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[2]} />
               </BarChart>
             </ResponsiveContainer>
@@ -554,7 +554,7 @@ function Dashboard() {
                 }}
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[0]} />
+              <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[3]} />
               <Bar xAxisId="qtd" dataKey="qtd" name="Quantidade" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[2]} />
             </BarChart>
           </ResponsiveContainer>
