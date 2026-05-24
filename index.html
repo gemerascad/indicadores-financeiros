@@ -80,6 +80,7 @@
 {
   "imports": {
     "react": "https://esm.sh/react@18.3.1",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
     "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
     "recharts": "https://esm.sh/recharts@2.15.0?external=react,react-dom",
     "lucide-react": "https://esm.sh/lucide-react@1.0.0?external=react,react-dom"
@@ -118,7 +119,7 @@ import {
   RotateCcw,
   Wallet
 } from "lucide-react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 var MES_ORDER = [
   "JANEIRO",
   "FEVEREIRO",
@@ -213,61 +214,61 @@ var ALL_PAYMENTS = ALL_PAYMENTS_RAW.map((p) => ({
 function KpiCard({ label, value, hint, accent = "default", icon }) {
   const accentBar = { default: "bg-[hsl(var(--primary))]", success: "bg-emerald-500", danger: "bg-rose-500", warning: "bg-amber-500" }[accent];
   const accentText = { default: "text-[hsl(var(--primary))]", success: "text-emerald-400", danger: "text-rose-400", warning: "text-amber-400" }[accent];
-  return /* @__PURE__ */ jsxDEV("div", {
+  return /* @__PURE__ */ jsxs("div", {
     className: "relative overflow-hidden rounded-xl border bg-[hsl(var(--card))] p-5",
     children: [
-      /* @__PURE__ */ jsxDEV("div", {
+      /* @__PURE__ */ jsx("div", {
         className: `absolute left-0 top-0 h-full w-1 ${accentBar}`
-      }, undefined, false, undefined, this),
-      /* @__PURE__ */ jsxDEV("div", {
+      }),
+      /* @__PURE__ */ jsxs("div", {
         className: "flex items-start justify-between gap-2",
         children: [
-          /* @__PURE__ */ jsxDEV("p", {
+          /* @__PURE__ */ jsx("p", {
             className: "text-xs font-medium uppercase tracking-wider text-[hsl(var(--muted-foreground))]",
             children: label
-          }, undefined, false, undefined, this),
-          icon ? /* @__PURE__ */ jsxDEV("div", {
+          }),
+          icon ? /* @__PURE__ */ jsx("div", {
             className: `opacity-70 ${accentText}`,
             children: icon
-          }, undefined, false, undefined, this) : null
+          }) : null
         ]
-      }, undefined, true, undefined, this),
-      /* @__PURE__ */ jsxDEV("p", {
+      }),
+      /* @__PURE__ */ jsx("p", {
         className: "mt-2 text-3xl font-semibold tracking-tight text-[hsl(var(--card-foreground))]",
         children: value
-      }, undefined, false, undefined, this),
-      hint ? /* @__PURE__ */ jsxDEV("p", {
+      }),
+      hint ? /* @__PURE__ */ jsx("p", {
         className: "mt-1 text-xs text-[hsl(var(--muted-foreground))]",
         children: hint
-      }, undefined, false, undefined, this) : null
+      }) : null
     ]
-  }, undefined, true, undefined, this);
+  });
 }
 function ChartCard({ title, subtitle, children, className = "" }) {
-  return /* @__PURE__ */ jsxDEV("div", {
+  return /* @__PURE__ */ jsxs("div", {
     className: `flex flex-col rounded-xl border bg-[hsl(var(--card))] p-5 ${className}`,
     children: [
-      /* @__PURE__ */ jsxDEV("div", {
+      /* @__PURE__ */ jsx("div", {
         className: "mb-4 flex items-start justify-between gap-2",
-        children: /* @__PURE__ */ jsxDEV("div", {
+        children: /* @__PURE__ */ jsxs("div", {
           children: [
-            /* @__PURE__ */ jsxDEV("h3", {
+            /* @__PURE__ */ jsx("h3", {
               className: "text-sm font-semibold text-[hsl(var(--card-foreground))]",
               children: title
-            }, undefined, false, undefined, this),
-            subtitle ? /* @__PURE__ */ jsxDEV("p", {
+            }),
+            subtitle ? /* @__PURE__ */ jsx("p", {
               className: "text-xs text-[hsl(var(--muted-foreground))]",
               children: subtitle
-            }, undefined, false, undefined, this) : null
+            }) : null
           ]
-        }, undefined, true, undefined, this)
-      }, undefined, false, undefined, this),
-      /* @__PURE__ */ jsxDEV("div", {
+        })
+      }),
+      /* @__PURE__ */ jsx("div", {
         className: "flex-1",
         children
-      }, undefined, false, undefined, this)
+      })
     ]
-  }, undefined, true, undefined, this);
+  });
 }
 function MultiSelect({ label, options, selected, onChange, placeholder = "Todos" }) {
   const [open, setOpen] = useState(false);
@@ -278,61 +279,61 @@ function MultiSelect({ label, options, selected, onChange, placeholder = "Todos"
       onChange([...selected, val]);
   };
   const display = selected.length === 1 ? selected[0] : selected.length > 1 ? selected.length + " selecionados" : placeholder;
-  return /* @__PURE__ */ jsxDEV("div", {
+  return /* @__PURE__ */ jsxs("div", {
     className: "flex flex-col gap-1.5 relative",
     children: [
-      /* @__PURE__ */ jsxDEV("label", {
+      /* @__PURE__ */ jsx("label", {
         className: "text-xs font-medium text-[hsl(var(--muted-foreground))]",
         children: label
-      }, undefined, false, undefined, this),
-      /* @__PURE__ */ jsxDEV("button", {
+      }),
+      /* @__PURE__ */ jsxs("button", {
         onClick: () => setOpen(!open),
         className: "h-10 w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 text-left text-sm text-[hsl(var(--foreground))] flex justify-between items-center",
         children: [
-          /* @__PURE__ */ jsxDEV("span", {
+          /* @__PURE__ */ jsx("span", {
             className: "truncate",
             children: display
-          }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsxDEV("span", {
+          }),
+          /* @__PURE__ */ jsx("span", {
             children: "▼"
-          }, undefined, false, undefined, this)
+          })
         ]
-      }, undefined, true, undefined, this),
-      open && /* @__PURE__ */ jsxDEV("div", {
+      }),
+      open && /* @__PURE__ */ jsx("div", {
         className: "absolute top-[calc(100%+4px)] left-0 z-50 w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--popover))] p-2 shadow-lg max-h-60 overflow-auto",
         children: options.map((opt) => {
           const isSel = selected.includes(opt);
-          return /* @__PURE__ */ jsxDEV("div", {
+          return /* @__PURE__ */ jsxs("div", {
             onClick: () => toggle(opt),
             className: "cursor-pointer flex items-center gap-2 px-2 py-1.5 text-sm text-[hsl(var(--popover-foreground))] hover:bg-[hsl(var(--accent))]",
             children: [
-              /* @__PURE__ */ jsxDEV("div", {
+              /* @__PURE__ */ jsx("div", {
                 className: `flex h-4 w-4 items-center justify-center rounded border ${isSel ? "bg-[hsl(var(--primary))] border-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))]"}`,
                 children: isSel ? "✓" : ""
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV("span", {
+              }),
+              /* @__PURE__ */ jsx("span", {
                 children: opt
-              }, undefined, false, undefined, this)
+              })
             ]
-          }, opt, true, undefined, this);
+          }, opt);
         })
-      }, undefined, false, undefined, this)
+      })
     ]
-  }, undefined, true, undefined, this);
+  });
 }
 function DateRange({ label, from, to, onChange }) {
   const text = from && to ? from.toLocaleDateString("pt-BR") + " – " + to.toLocaleDateString("pt-BR") : from ? "A partir de " + from.toLocaleDateString("pt-BR") : to ? "Até " + to.toLocaleDateString("pt-BR") : "Qualquer data";
   const [show, setShow] = useState(false);
   const [draftFrom, setDraftFrom] = useState(from ? from.toISOString().slice(0, 10) : "");
   const [draftTo, setDraftTo] = useState(to ? to.toISOString().slice(0, 10) : "");
-  return /* @__PURE__ */ jsxDEV("div", {
+  return /* @__PURE__ */ jsxs("div", {
     className: "flex flex-col gap-1.5 relative",
     children: [
-      /* @__PURE__ */ jsxDEV("label", {
+      /* @__PURE__ */ jsx("label", {
         className: "text-xs font-medium text-[hsl(var(--muted-foreground))]",
         children: label
-      }, undefined, false, undefined, this),
-      /* @__PURE__ */ jsxDEV("button", {
+      }),
+      /* @__PURE__ */ jsxs("button", {
         onClick: () => {
           setShow(!show);
           setDraftFrom(from ? from.toISOString().slice(0, 10) : "");
@@ -340,116 +341,116 @@ function DateRange({ label, from, to, onChange }) {
         },
         className: "h-10 w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 text-left text-sm text-[hsl(var(--foreground))] flex justify-between items-center",
         children: [
-          /* @__PURE__ */ jsxDEV("span", {
+          /* @__PURE__ */ jsx("span", {
             children: text
-          }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsxDEV("span", {
+          }),
+          /* @__PURE__ */ jsx("span", {
             children: "\uD83D\uDCC5"
-          }, undefined, false, undefined, this)
+          })
         ]
-      }, undefined, true, undefined, this),
-      show && /* @__PURE__ */ jsxDEV("div", {
+      }),
+      show && /* @__PURE__ */ jsx("div", {
         className: "absolute top-[calc(100%+4px)] left-0 z-50 w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--popover))] p-3 shadow-lg",
-        children: /* @__PURE__ */ jsxDEV("div", {
+        children: /* @__PURE__ */ jsxs("div", {
           className: "space-y-2",
           children: [
-            /* @__PURE__ */ jsxDEV("div", {
+            /* @__PURE__ */ jsxs("div", {
               children: [
-                /* @__PURE__ */ jsxDEV("label", {
+                /* @__PURE__ */ jsx("label", {
                   className: "text-xs text-[hsl(var(--muted-foreground))]",
                   children: "De"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV("input", {
+                }),
+                /* @__PURE__ */ jsx("input", {
                   type: "date",
                   value: draftFrom,
                   onChange: (e) => setDraftFrom(e.target.value),
                   className: "w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-2 py-1 text-sm"
-                }, undefined, false, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsxDEV("div", {
+            }),
+            /* @__PURE__ */ jsxs("div", {
               children: [
-                /* @__PURE__ */ jsxDEV("label", {
+                /* @__PURE__ */ jsx("label", {
                   className: "text-xs text-[hsl(var(--muted-foreground))]",
                   children: "Até"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV("input", {
+                }),
+                /* @__PURE__ */ jsx("input", {
                   type: "date",
                   value: draftTo,
                   onChange: (e) => setDraftTo(e.target.value),
                   className: "w-full rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-2 py-1 text-sm"
-                }, undefined, false, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsxDEV("div", {
+            }),
+            /* @__PURE__ */ jsxs("div", {
               className: "flex gap-2 pt-1",
               children: [
-                /* @__PURE__ */ jsxDEV("button", {
+                /* @__PURE__ */ jsx("button", {
                   onClick: () => {
                     onChange(draftFrom ? new Date(draftFrom + "T00:00:00") : null, draftTo ? new Date(draftTo + "T23:59:59") : null);
                     setShow(false);
                   },
                   className: "flex-1 rounded-md bg-[hsl(var(--primary))] px-3 py-1.5 text-sm text-[hsl(var(--primary-foreground))]",
                   children: "Aplicar"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV("button", {
+                }),
+                /* @__PURE__ */ jsx("button", {
                   onClick: () => {
                     onChange(null, null);
                     setShow(false);
                   },
                   className: "rounded-md border border-[hsl(var(--border))] px-3 py-1.5 text-sm text-[hsl(var(--foreground))]",
                   children: "Limpar"
-                }, undefined, false, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this)
+            })
           ]
-        }, undefined, true, undefined, this)
-      }, undefined, false, undefined, this)
+        })
+      })
     ]
-  }, undefined, true, undefined, this);
+  });
 }
 function Badge({ children, variant = "default" }) {
   const cls = variant === "destructive" ? "bg-[hsl(350_55%_52%)]/15 text-[hsl(350_55%_52%)] border-[hsl(350_55%_52%)]/20" : variant === "secondary" ? "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] border-transparent" : "border-[hsl(var(--border))] text-[hsl(var(--foreground))]";
-  return /* @__PURE__ */ jsxDEV("span", {
+  return /* @__PURE__ */ jsx("span", {
     className: `inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium ${cls}`,
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function Table({ children }) {
-  return /* @__PURE__ */ jsxDEV("table", {
+  return /* @__PURE__ */ jsx("table", {
     className: "w-full caption-bottom text-sm",
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function TableHeader({ children }) {
-  return /* @__PURE__ */ jsxDEV("thead", {
+  return /* @__PURE__ */ jsx("thead", {
     className: "[&_tr]:border-b",
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function TableBody({ children }) {
-  return /* @__PURE__ */ jsxDEV("tbody", {
+  return /* @__PURE__ */ jsx("tbody", {
     className: "[&_tr:last-child]:border-0",
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function TableRow({ children }) {
-  return /* @__PURE__ */ jsxDEV("tr", {
+  return /* @__PURE__ */ jsx("tr", {
     className: "border-b border-[hsl(var(--border))] transition-colors hover:bg-[hsl(var(--muted))]/30",
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function TableHead({ children, className = "" }) {
-  return /* @__PURE__ */ jsxDEV("th", {
+  return /* @__PURE__ */ jsx("th", {
     className: `h-10 px-3 text-left align-middle font-medium text-[hsl(var(--muted-foreground))] text-xs ${className}`,
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function TableCell({ children, className = "" }) {
-  return /* @__PURE__ */ jsxDEV("td", {
+  return /* @__PURE__ */ jsx("td", {
     className: `p-3 align-middle text-xs ${className}`,
     children
-  }, undefined, false, undefined, this);
+  });
 }
 function Dashboard() {
   const [filters, setFilters] = useState(EMPTY_FILTERS);
@@ -485,197 +486,197 @@ function Dashboard() {
   const recent = useMemo(() => [...filtered].filter((p) => p.dataPagamento).sort((a, b) => (b.dataPagamento?.getTime() ?? 1) - (a.dataPagamento?.getTime() ?? 1)).slice(0, 25), [filtered]);
   const hasActiveFilters = filters.meses.length + filters.responsaveis.length + filters.status.length + filters.tipos.length + filters.empresas.length > 0 || filters.dateFrom !== null || filters.dateTo !== null;
   const ttStyle = { background: "hsl(var(--popover))", border: "1px solid hsl(var(--border))", borderRadius: 8, fontSize: 12 };
-  return /* @__PURE__ */ jsxDEV("div", {
+  return /* @__PURE__ */ jsxs("div", {
     className: "min-h-screen bg-[hsl(var(--muted))]",
     children: [
-      /* @__PURE__ */ jsxDEV("header", {
+      /* @__PURE__ */ jsx("header", {
         className: "sticky top-0 z-20 border-b border-[hsl(var(--border))] bg-[hsl(var(--background))]/95 backdrop-blur",
-        children: /* @__PURE__ */ jsxDEV("div", {
+        children: /* @__PURE__ */ jsxs("div", {
           className: "mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-6 py-4",
           children: [
-            /* @__PURE__ */ jsxDEV("div", {
+            /* @__PURE__ */ jsxs("div", {
               className: "flex items-center gap-3",
               children: [
-                /* @__PURE__ */ jsxDEV("div", {
+                /* @__PURE__ */ jsx("div", {
                   className: "flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]",
-                  children: /* @__PURE__ */ jsxDEV(Wallet, {
+                  children: /* @__PURE__ */ jsx(Wallet, {
                     size: 20
-                  }, undefined, false, undefined, this)
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV("div", {
+                  })
+                }),
+                /* @__PURE__ */ jsxs("div", {
                   children: [
-                    /* @__PURE__ */ jsxDEV("h1", {
+                    /* @__PURE__ */ jsx("h1", {
                       className: "text-lg font-semibold tracking-tight text-[hsl(var(--foreground))]",
                       children: "Controle de Pagamentos"
-                    }, undefined, false, undefined, this),
-                    /* @__PURE__ */ jsxDEV("p", {
+                    }),
+                    /* @__PURE__ */ jsxs("p", {
                       className: "text-xs text-[hsl(var(--muted-foreground))]",
                       children: [
                         "Painel financeiro · ",
                         formatInt(ALL_PAYMENTS.length),
                         " registros na base"
                       ]
-                    }, undefined, true, undefined, this)
+                    })
                   ]
-                }, undefined, true, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsxDEV("div", {
+            }),
+            /* @__PURE__ */ jsxs("div", {
               className: "flex items-center gap-2",
               children: [
-                /* @__PURE__ */ jsxDEV(Badge, {
+                /* @__PURE__ */ jsxs(Badge, {
                   variant: "secondary",
                   children: [
                     formatInt(filtered.length),
                     " registros filtrados"
                   ]
-                }, undefined, true, undefined, this),
-                hasActiveFilters && /* @__PURE__ */ jsxDEV("button", {
+                }),
+                hasActiveFilters && /* @__PURE__ */ jsxs("button", {
                   onClick: () => setFilters(EMPTY_FILTERS),
                   className: "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm text-[hsl(var(--foreground))] hover:bg-[hsl(var(--accent))]",
                   children: [
-                    /* @__PURE__ */ jsxDEV(RotateCcw, {
+                    /* @__PURE__ */ jsx(RotateCcw, {
                       size: 14
-                    }, undefined, false, undefined, this),
+                    }),
                     " Limpar filtros"
                   ]
-                }, undefined, true, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this)
+            })
           ]
-        }, undefined, true, undefined, this)
-      }, undefined, false, undefined, this),
-      /* @__PURE__ */ jsxDEV("main", {
+        })
+      }),
+      /* @__PURE__ */ jsxs("main", {
         className: "mx-auto max-w-[1600px] space-y-6 px-6 py-6",
         children: [
-          /* @__PURE__ */ jsxDEV("div", {
+          /* @__PURE__ */ jsx("div", {
             className: "rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5",
-            children: /* @__PURE__ */ jsxDEV("div", {
+            children: /* @__PURE__ */ jsxs("div", {
               className: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6",
               children: [
-                /* @__PURE__ */ jsxDEV(MultiSelect, {
+                /* @__PURE__ */ jsx(MultiSelect, {
                   label: "Mês",
                   options: MES_ORDER,
                   selected: filters.meses,
                   onChange: (v) => setFilters((f) => ({ ...f, meses: v }))
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV(DateRange, {
+                }),
+                /* @__PURE__ */ jsx(DateRange, {
                   label: "Período (data pagamento)",
                   from: filters.dateFrom,
                   to: filters.dateTo,
                   onChange: (from, to) => setFilters((f) => ({ ...f, dateFrom: from, dateTo: to }))
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV(MultiSelect, {
+                }),
+                /* @__PURE__ */ jsx(MultiSelect, {
                   label: "Responsável",
                   options: responsavelOpts,
                   selected: filters.responsaveis,
                   onChange: (v) => setFilters((f) => ({ ...f, responsaveis: v }))
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV(MultiSelect, {
+                }),
+                /* @__PURE__ */ jsx(MultiSelect, {
                   label: "Status",
                   options: statusOpts,
                   selected: filters.status,
                   onChange: (v) => setFilters((f) => ({ ...f, status: v }))
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV(MultiSelect, {
+                }),
+                /* @__PURE__ */ jsx(MultiSelect, {
                   label: "Tipo de pagamento",
                   options: tipoOpts,
                   selected: filters.tipos,
                   onChange: (v) => setFilters((f) => ({ ...f, tipos: v }))
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsxDEV(MultiSelect, {
+                }),
+                /* @__PURE__ */ jsx(MultiSelect, {
                   label: "Empresa",
                   options: empresaOpts,
                   selected: filters.empresas,
                   onChange: (v) => setFilters((f) => ({ ...f, empresas: v }))
-                }, undefined, false, undefined, this)
+                })
               ]
-            }, undefined, true, undefined, this)
-          }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsxDEV("div", {
+            })
+          }),
+          /* @__PURE__ */ jsxs("div", {
             className: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4",
             children: [
-              /* @__PURE__ */ jsxDEV(KpiCard, {
+              /* @__PURE__ */ jsx(KpiCard, {
                 label: "Total de pagamentos",
                 value: formatInt(kpis.total),
                 hint: `Ticket médio ${formatBRL(kpis.ticketMedio)}`,
-                icon: /* @__PURE__ */ jsxDEV(CircleDollarSign, {
+                icon: /* @__PURE__ */ jsx(CircleDollarSign, {
                   size: 20
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV(KpiCard, {
+                })
+              }),
+              /* @__PURE__ */ jsx(KpiCard, {
                 label: "Valor total",
                 value: formatCompact(kpis.totalValor),
                 hint: formatBRLFull(kpis.totalValor),
-                icon: /* @__PURE__ */ jsxDEV(Wallet, {
+                icon: /* @__PURE__ */ jsx(Wallet, {
                   size: 20
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV(KpiCard, {
+                })
+              }),
+              /* @__PURE__ */ jsx(KpiCard, {
                 label: "Pagamentos OK",
                 value: formatInt(kpis.okQtd),
                 hint: `${formatCompact(kpis.okValor)} liquidados`,
                 accent: "success",
-                icon: /* @__PURE__ */ jsxDEV(CheckCircle2, {
+                icon: /* @__PURE__ */ jsx(CheckCircle2, {
                   size: 20
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV(KpiCard, {
+                })
+              }),
+              /* @__PURE__ */ jsx(KpiCard, {
                 label: "Pagamentos devolvidos",
                 value: formatInt(kpis.devQtd),
                 hint: `${kpis.taxaDevolucao.toFixed(1)}% do total · ${formatCompact(kpis.devValor)}`,
                 accent: "danger",
-                icon: /* @__PURE__ */ jsxDEV(ArrowDownCircle, {
+                icon: /* @__PURE__ */ jsx(ArrowDownCircle, {
                   size: 20
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this)
+                })
+              })
             ]
-          }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsxDEV("div", {
+          }),
+          /* @__PURE__ */ jsxs("div", {
             className: "grid grid-cols-1 gap-4 lg:grid-cols-3",
             children: [
-              /* @__PURE__ */ jsxDEV(ChartCard, {
+              /* @__PURE__ */ jsx(ChartCard, {
                 className: "lg:col-span-2 min-h-[320px]",
                 title: "Evolução mensal",
                 subtitle: "Valor pago por mês (ordem cronológica)",
-                children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, {
+                children: /* @__PURE__ */ jsx(ResponsiveContainer, {
                   width: "100%",
                   height: 280,
-                  children: /* @__PURE__ */ jsxDEV(LineChart, {
+                  children: /* @__PURE__ */ jsxs(LineChart, {
                     data: mesData,
                     margin: { top: 8, right: 40, left: 0, bottom: 0 },
                     children: [
-                      /* @__PURE__ */ jsxDEV(CartesianGrid, {
+                      /* @__PURE__ */ jsx(CartesianGrid, {
                         strokeDasharray: "3 3",
                         stroke: "hsl(var(--border))",
                         vertical: false
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(XAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(XAxis, {
                         dataKey: "name",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(YAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(YAxis, {
                         yAxisId: "left",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatCompact(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(YAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(YAxis, {
                         yAxisId: "right",
                         orientation: "right",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatInt(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Tooltip, {
+                      }),
+                      /* @__PURE__ */ jsx(Tooltip, {
                         formatter: (v, n) => n === "valor" ? formatBRLFull(v) : formatInt(v),
                         contentStyle: ttStyle
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Legend, {
+                      }),
+                      /* @__PURE__ */ jsx(Legend, {
                         wrapperStyle: { fontSize: 12 }
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Line, {
+                      }),
+                      /* @__PURE__ */ jsx(Line, {
                         type: "monotone",
                         dataKey: "valor",
                         name: "Valor",
@@ -684,8 +685,8 @@ function Dashboard() {
                         strokeWidth: 2.5,
                         dot: { r: 3 },
                         activeDot: { r: 5 }
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Line, {
+                      }),
+                      /* @__PURE__ */ jsx(Line, {
                         type: "monotone",
                         dataKey: "qtd",
                         name: "Quantidade",
@@ -693,20 +694,20 @@ function Dashboard() {
                         stroke: CHART_PALETTE[2],
                         strokeWidth: 2,
                         dot: { r: 3 }
-                      }, undefined, false, undefined, this)
+                      })
                     ]
-                  }, undefined, true, undefined, this)
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV(ChartCard, {
+                  })
+                })
+              }),
+              /* @__PURE__ */ jsx(ChartCard, {
                 title: "Status dos pagamentos",
                 subtitle: "Distribuição por quantidade",
-                children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, {
+                children: /* @__PURE__ */ jsx(ResponsiveContainer, {
                   width: "100%",
                   height: 280,
-                  children: /* @__PURE__ */ jsxDEV(PieChart, {
+                  children: /* @__PURE__ */ jsxs(PieChart, {
                     children: [
-                      /* @__PURE__ */ jsxDEV(Pie, {
+                      /* @__PURE__ */ jsx(Pie, {
                         data: statusData,
                         dataKey: "qtd",
                         nameKey: "name",
@@ -715,322 +716,322 @@ function Dashboard() {
                         innerRadius: 55,
                         outerRadius: 95,
                         paddingAngle: 2,
-                        children: statusData.map((d, i) => /* @__PURE__ */ jsxDEV(Cell, {
+                        children: statusData.map((d, i) => /* @__PURE__ */ jsx(Cell, {
                           fill: STATUS_COLORS[d.name] ?? CHART_PALETTE[i % CHART_PALETTE.length]
-                        }, d.name, false, undefined, this))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Tooltip, {
+                        }, d.name))
+                      }),
+                      /* @__PURE__ */ jsx(Tooltip, {
                         formatter: (v) => formatInt(v),
                         contentStyle: ttStyle
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Legend, {
+                      }),
+                      /* @__PURE__ */ jsx(Legend, {
                         wrapperStyle: { fontSize: 11 }
-                      }, undefined, false, undefined, this)
+                      })
                     ]
-                  }, undefined, true, undefined, this)
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this)
+                  })
+                })
+              })
             ]
-          }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsxDEV("div", {
+          }),
+          /* @__PURE__ */ jsxs("div", {
             className: "grid grid-cols-1 gap-4 lg:grid-cols-2",
             children: [
-              /* @__PURE__ */ jsxDEV(ChartCard, {
+              /* @__PURE__ */ jsx(ChartCard, {
                 title: "Responsáveis",
                 subtitle: "Por valor pago e quantidade",
-                children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, {
+                children: /* @__PURE__ */ jsx(ResponsiveContainer, {
                   width: "100%",
                   height: Math.max(260, respData.length * 44),
-                  children: /* @__PURE__ */ jsxDEV(BarChart, {
+                  children: /* @__PURE__ */ jsxs(BarChart, {
                     data: respData,
                     layout: "vertical",
                     margin: { top: 0, right: 16, left: 8, bottom: 0 },
                     children: [
-                      /* @__PURE__ */ jsxDEV(CartesianGrid, {
+                      /* @__PURE__ */ jsx(CartesianGrid, {
                         strokeDasharray: "3 3",
                         stroke: "hsl(var(--border))",
                         horizontal: false
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(XAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(XAxis, {
                         xAxisId: "valor",
                         type: "number",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatCompact(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(XAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(XAxis, {
                         xAxisId: "qtd",
                         type: "number",
                         orientation: "top",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatInt(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(YAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(YAxis, {
                         type: "category",
                         dataKey: "name",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         width: 110
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Tooltip, {
+                      }),
+                      /* @__PURE__ */ jsx(Tooltip, {
                         formatter: (v, n) => n === "Valor" ? formatBRLFull(v) : formatInt(v),
                         contentStyle: ttStyle
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Legend, {
+                      }),
+                      /* @__PURE__ */ jsx(Legend, {
                         wrapperStyle: { fontSize: 12 }
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Bar, {
+                      }),
+                      /* @__PURE__ */ jsx(Bar, {
                         xAxisId: "valor",
                         dataKey: "valor",
                         name: "Valor",
                         radius: [0, 4, 4, 0],
                         fill: CHART_PALETTE[3]
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Bar, {
+                      }),
+                      /* @__PURE__ */ jsx(Bar, {
                         xAxisId: "qtd",
                         dataKey: "qtd",
                         name: "Quantidade",
                         radius: [0, 4, 4, 0],
                         fill: CHART_PALETTE[2]
-                      }, undefined, false, undefined, this)
+                      })
                     ]
-                  }, undefined, true, undefined, this)
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV(ChartCard, {
+                  })
+                })
+              }),
+              /* @__PURE__ */ jsx(ChartCard, {
                 title: "Tipos de pagamento",
                 subtitle: "Top 10 por valor e quantidade",
-                children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, {
+                children: /* @__PURE__ */ jsx(ResponsiveContainer, {
                   width: "100%",
                   height: Math.max(260, tipoData.length * 44),
-                  children: /* @__PURE__ */ jsxDEV(BarChart, {
+                  children: /* @__PURE__ */ jsxs(BarChart, {
                     data: tipoData,
                     layout: "vertical",
                     margin: { top: 0, right: 16, left: 8, bottom: 0 },
                     children: [
-                      /* @__PURE__ */ jsxDEV(CartesianGrid, {
+                      /* @__PURE__ */ jsx(CartesianGrid, {
                         strokeDasharray: "3 3",
                         stroke: "hsl(var(--border))",
                         horizontal: false
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(XAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(XAxis, {
                         xAxisId: "valor",
                         type: "number",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatCompact(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(XAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(XAxis, {
                         xAxisId: "qtd",
                         type: "number",
                         orientation: "top",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         tickFormatter: (v) => formatInt(Number(v))
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(YAxis, {
+                      }),
+                      /* @__PURE__ */ jsx(YAxis, {
                         type: "category",
                         dataKey: "name",
                         stroke: "hsl(var(--muted-foreground))",
                         fontSize: 11,
                         width: 150
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Tooltip, {
+                      }),
+                      /* @__PURE__ */ jsx(Tooltip, {
                         formatter: (v, n) => n === "Valor" ? formatBRLFull(v) : formatInt(v),
                         contentStyle: ttStyle
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Legend, {
+                      }),
+                      /* @__PURE__ */ jsx(Legend, {
                         wrapperStyle: { fontSize: 12 }
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Bar, {
+                      }),
+                      /* @__PURE__ */ jsx(Bar, {
                         xAxisId: "valor",
                         dataKey: "valor",
                         name: "Valor",
                         radius: [0, 4, 4, 0],
                         fill: CHART_PALETTE[3]
-                      }, undefined, false, undefined, this),
-                      /* @__PURE__ */ jsxDEV(Bar, {
+                      }),
+                      /* @__PURE__ */ jsx(Bar, {
                         xAxisId: "qtd",
                         dataKey: "qtd",
                         name: "Quantidade",
                         radius: [0, 4, 4, 0],
                         fill: CHART_PALETTE[2]
-                      }, undefined, false, undefined, this)
+                      })
                     ]
-                  }, undefined, true, undefined, this)
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this)
+                  })
+                })
+              })
             ]
-          }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsxDEV(ChartCard, {
+          }),
+          /* @__PURE__ */ jsx(ChartCard, {
             title: "Empresas (clientes)",
             subtitle: "Top 8 por valor total pago",
-            children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, {
+            children: /* @__PURE__ */ jsx(ResponsiveContainer, {
               width: "100%",
               height: Math.max(260, empresaData.length * 44),
-              children: /* @__PURE__ */ jsxDEV(BarChart, {
+              children: /* @__PURE__ */ jsxs(BarChart, {
                 data: empresaData,
                 layout: "vertical",
                 margin: { top: 0, right: 16, left: 8, bottom: 0 },
                 children: [
-                  /* @__PURE__ */ jsxDEV(CartesianGrid, {
+                  /* @__PURE__ */ jsx(CartesianGrid, {
                     strokeDasharray: "3 3",
                     stroke: "hsl(var(--border))",
                     horizontal: false
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(XAxis, {
+                  }),
+                  /* @__PURE__ */ jsx(XAxis, {
                     xAxisId: "valor",
                     type: "number",
                     stroke: "hsl(var(--muted-foreground))",
                     fontSize: 11,
                     tickFormatter: (v) => formatCompact(Number(v))
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(XAxis, {
+                  }),
+                  /* @__PURE__ */ jsx(XAxis, {
                     xAxisId: "qtd",
                     type: "number",
                     orientation: "top",
                     stroke: "hsl(var(--muted-foreground))",
                     fontSize: 11,
                     tickFormatter: (v) => formatInt(Number(v))
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(YAxis, {
+                  }),
+                  /* @__PURE__ */ jsx(YAxis, {
                     type: "category",
                     dataKey: "name",
                     stroke: "hsl(var(--muted-foreground))",
                     fontSize: 11,
                     width: 110
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(Tooltip, {
+                  }),
+                  /* @__PURE__ */ jsx(Tooltip, {
                     formatter: (v, n) => n === "Valor" ? formatBRLFull(v) : formatInt(v),
                     contentStyle: ttStyle
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(Legend, {
+                  }),
+                  /* @__PURE__ */ jsx(Legend, {
                     wrapperStyle: { fontSize: 12 }
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(Bar, {
+                  }),
+                  /* @__PURE__ */ jsx(Bar, {
                     xAxisId: "valor",
                     dataKey: "valor",
                     name: "Valor",
                     radius: [0, 4, 4, 0],
                     fill: CHART_PALETTE[3]
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsxDEV(Bar, {
+                  }),
+                  /* @__PURE__ */ jsx(Bar, {
                     xAxisId: "qtd",
                     dataKey: "qtd",
                     name: "Quantidade",
                     radius: [0, 4, 4, 0],
                     fill: CHART_PALETTE[2]
-                  }, undefined, false, undefined, this)
+                  })
                 ]
-              }, undefined, true, undefined, this)
-            }, undefined, false, undefined, this)
-          }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsxDEV("div", {
+              })
+            })
+          }),
+          /* @__PURE__ */ jsxs("div", {
             className: "rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5",
             children: [
-              /* @__PURE__ */ jsxDEV("div", {
+              /* @__PURE__ */ jsx("div", {
                 className: "mb-4 flex items-center justify-between",
-                children: /* @__PURE__ */ jsxDEV("div", {
+                children: /* @__PURE__ */ jsxs("div", {
                   children: [
-                    /* @__PURE__ */ jsxDEV("h3", {
+                    /* @__PURE__ */ jsx("h3", {
                       className: "text-sm font-semibold text-[hsl(var(--card-foreground))]",
                       children: "Pagamentos recentes"
-                    }, undefined, false, undefined, this),
-                    /* @__PURE__ */ jsxDEV("p", {
+                    }),
+                    /* @__PURE__ */ jsx("p", {
                       className: "text-xs text-[hsl(var(--muted-foreground))]",
                       children: "Últimos 25 pagamentos filtrados, por data"
-                    }, undefined, false, undefined, this)
+                    })
                   ]
-                }, undefined, true, undefined, this)
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsxDEV("div", {
+                })
+              }),
+              /* @__PURE__ */ jsx("div", {
                 className: "h-[420px] overflow-auto rounded-md border border-[hsl(var(--border))]",
-                children: /* @__PURE__ */ jsxDEV(Table, {
+                children: /* @__PURE__ */ jsxs(Table, {
                   children: [
-                    /* @__PURE__ */ jsxDEV(TableHeader, {
-                      children: /* @__PURE__ */ jsxDEV(TableRow, {
+                    /* @__PURE__ */ jsx(TableHeader, {
+                      children: /* @__PURE__ */ jsxs(TableRow, {
                         children: [
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          /* @__PURE__ */ jsx(TableHead, {
                             children: "Data"
-                          }, undefined, false, undefined, this),
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          }),
+                          /* @__PURE__ */ jsx(TableHead, {
                             children: "Responsável"
-                          }, undefined, false, undefined, this),
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          }),
+                          /* @__PURE__ */ jsx(TableHead, {
                             children: "Empresa"
-                          }, undefined, false, undefined, this),
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          }),
+                          /* @__PURE__ */ jsx(TableHead, {
                             children: "Tipo"
-                          }, undefined, false, undefined, this),
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          }),
+                          /* @__PURE__ */ jsx(TableHead, {
                             children: "Status"
-                          }, undefined, false, undefined, this),
-                          /* @__PURE__ */ jsxDEV(TableHead, {
+                          }),
+                          /* @__PURE__ */ jsx(TableHead, {
                             className: "text-right",
                             children: "Valor"
-                          }, undefined, false, undefined, this)
+                          })
                         ]
-                      }, undefined, true, undefined, this)
-                    }, undefined, false, undefined, this),
-                    /* @__PURE__ */ jsxDEV(TableBody, {
+                      })
+                    }),
+                    /* @__PURE__ */ jsxs(TableBody, {
                       children: [
-                        recent.map((p, i) => /* @__PURE__ */ jsxDEV(TableRow, {
+                        recent.map((p, i) => /* @__PURE__ */ jsxs(TableRow, {
                           children: [
-                            /* @__PURE__ */ jsxDEV(TableCell, {
+                            /* @__PURE__ */ jsx(TableCell, {
                               className: "whitespace-nowrap",
                               children: p.dataPagamento?.toLocaleDateString("pt-BR")
-                            }, undefined, false, undefined, this),
-                            /* @__PURE__ */ jsxDEV(TableCell, {
+                            }),
+                            /* @__PURE__ */ jsx(TableCell, {
                               className: "font-medium",
                               children: p.responsavel
-                            }, undefined, false, undefined, this),
-                            /* @__PURE__ */ jsxDEV(TableCell, {
+                            }),
+                            /* @__PURE__ */ jsx(TableCell, {
                               className: "max-w-[260px] truncate text-[hsl(var(--muted-foreground))]",
                               children: p.empresa
-                            }, undefined, false, undefined, this),
-                            /* @__PURE__ */ jsxDEV(TableCell, {
+                            }),
+                            /* @__PURE__ */ jsx(TableCell, {
                               children: p.tipo
-                            }, undefined, false, undefined, this),
-                            /* @__PURE__ */ jsxDEV(TableCell, {
-                              children: /* @__PURE__ */ jsxDEV(Badge, {
+                            }),
+                            /* @__PURE__ */ jsx(TableCell, {
+                              children: /* @__PURE__ */ jsx(Badge, {
                                 variant: p.status === "OK" ? "secondary" : p.status === "DEVOLVIDO" ? "destructive" : "default",
                                 children: p.status
-                              }, undefined, false, undefined, this)
-                            }, undefined, false, undefined, this),
-                            /* @__PURE__ */ jsxDEV(TableCell, {
+                              })
+                            }),
+                            /* @__PURE__ */ jsx(TableCell, {
                               className: "whitespace-nowrap text-right font-mono",
                               children: formatBRLFull(p.valor)
-                            }, undefined, false, undefined, this)
+                            })
                           ]
-                        }, i, true, undefined, this)),
-                        recent.length === 0 && /* @__PURE__ */ jsxDEV(TableRow, {
-                          children: /* @__PURE__ */ jsxDEV(TableCell, {
+                        }, i)),
+                        recent.length === 0 && /* @__PURE__ */ jsx(TableRow, {
+                          children: /* @__PURE__ */ jsx(TableCell, {
                             colSpan: 6,
                             className: "text-center text-sm text-[hsl(var(--muted-foreground))]",
                             children: "Nenhum registro encontrado para os filtros aplicados."
-                          }, undefined, false, undefined, this)
-                        }, undefined, false, undefined, this)
+                          })
+                        })
                       ]
-                    }, undefined, true, undefined, this)
+                    })
                   ]
-                }, undefined, true, undefined, this)
-              }, undefined, false, undefined, this)
+                })
+              })
             ]
-          }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsxDEV("footer", {
+          }),
+          /* @__PURE__ */ jsx("footer", {
             className: "pb-4 pt-2 text-center text-xs text-[hsl(var(--muted-foreground))]",
             children: "Dashboard gerado a partir de CONTROLE_DE_PAGAMENTOS.xlsx"
-          }, undefined, false, undefined, this)
+          })
         ]
-      }, undefined, true, undefined, this)
+      })
     ]
-  }, undefined, true, undefined, this);
+  });
 }
 var rootEl = document.getElementById("root");
 if (rootEl) {
   const root = createRoot(rootEl);
-  root.render(/* @__PURE__ */ jsxDEV(Dashboard, {}, undefined, false, undefined, this));
+  root.render(/* @__PURE__ */ jsx(Dashboard, {}));
 }
 
 </script>
