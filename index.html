@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Indicadores Financeiros | Portfólio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Top Navigation / Portfolio Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-sm shadow-blue-500/20">
+                        <i class="fa-solid fa-chart-line text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold text-slate-900 tracking-tight">FinMetrics</span>
+                        <span class="hidden sm:inline-block ml-2 px-2 py-0.5 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-md border border-emerald-200">Portfólio Ativo</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/gemerascad/indicadores-financeiros" target="_blank" class="inline-flex items-center space-x-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors bg-slate-50 hover:bg-slate-100 px-3 py-2 rounded-lg border border-slate-200">
+                        <i class="fa-brands fa-github text-base"></i>
+                        <span class="hidden sm:inline">Ver Código Fonte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        
+        <!-- Welcome & Description -->
+        <div class="bg-gradient-to-r from-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent"></div>
+            <div class="relative z-10 max-w-3xl">
+                <nav class="flex mb-3 text-xs text-indigo-200 font-medium tracking-wide uppercase space-x-2">
+                    <span>Demonstração Técnica</span>
+                    <span>•</span>
+                    <span>Análise de Dados Financeiros</span>
+                </nav>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">Dashboard de Indicadores Financeiros</h1>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Este painel interativo foi desenvolvido para consolidar e analisar métricas de performance corporativa, incluindo faturamento, custos organizacionais, margens de lucro e retorno sobre investimento (ROI). Uma solução limpa, moderna e ideal para tomada de decisões estratégicas.
+                </p>
+            </div>
+        </div>
+
+        <!-- KPI Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-150 shadow-xs hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                        <i class="fa-solid fa-wallet text-lg"></i>
+                    </div>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
+                        <i class="fa-solid fa-arrow-up mr-1 text-[10px]"></i> +12.4%
+                    </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Faturamento Bruto</p>
+                <h3 class="text-2xl font-bold text-slate-900 mt-1">R$ 1.420.500</h3>
+                <p class="text-xs text-slate-400 mt-2">Acumulado do ano corrente</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-150 shadow-xs hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-purple-50 text-purple-600 rounded-xl">
+                        <i class="fa-solid fa-percent text-lg"></i>
+                    </div>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
+                        <i class="fa-solid fa-arrow-up mr-1 text-[10px]"></i> +2.1%
+                    </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Margem Líquida Média</p>
+                <h3 class="text-2xl font-bold text-slate-900 mt-1">24,8 %</h3>
+                <p class="text-xs text-slate-400 mt-2">Meta estipulada: 22,0%</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-150 shadow-xs hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
+                        <i class="fa-solid fa-scale-balanced text-lg"></i>
+                    </div>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700">
+                        <i class="fa-solid fa-arrow-down mr-1 text-[10px]"></i> -0.8%
+                    </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Custos Operacionais</p>
+                <h3 class="text-2xl font-bold text-slate-900 mt-1">R$ 482.300</h3>
+                <p class="text-xs text-slate-400 mt-2">Otimização de processos ativos</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-150 shadow-xs hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                        <i class="fa-solid fa-piggy-bank text-lg"></i>
+                    </div>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
+                        <i class="fa-solid fa-arrow-up mr-1 text-[10px]"></i> +5.4%
+                    </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">EBITDA Anual</p>
+                <h3 class="text-2xl font-bold text-slate-900 mt-1">R$ 388.900</h3>
+                <p class="text-xs text-slate-400 mt-2">Resultado antes de juros/taxas</p>
+            </div>
+        </div>
+
+        <!-- Charts Layout Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Trend Chart -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs lg:col-span-2">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-6 gap-3">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Evolução Mensal</h2>
+                        <p class="text-xs text-slate-500">Comparativo histórico entre Receita Bruta e Despesas Totais</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <span class="inline-flex items-center text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">Ano Atual</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Distribution Chart -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+                <div class="mb-6">
+                    <h2 class="text-lg font-bold text-slate-900">Alocação de Custos</h2>
+                    <p class="text-xs text-slate-500">Divisão percentual das despesas operacionais</p>
+                </div>
+                <div class="chart-container flex items-center justify-center">
+                    <canvas id="distributionChart" style="max-height: 260px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table Section -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+            <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900">Detalhamento dos Indicadores por Trimestre</h2>
+                    <p class="text-xs text-slate-500">Dados consolidados extraídos do modelo analítico</p>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                        </span>
+                        <input type="text" placeholder="Buscar trimestre..." class="pl-9 pr-4 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 w-full sm:w-64 transition-all">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50/70 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                            <th class="py-4 px-6">Período</th>
+                            <th class="py-4 px-6 text-right">Receita Bruta</th>
+                            <th class="py-4 px-6 text-right">Custos Variáveis</th>
+                            <th class="py-4 px-6 text-right">Margem de Contribuição</th>
+                            <th class="py-4 px-6 text-right">Lucro Líquido</th>
+                            <th class="py-4 px-6 text-center">Status Meta</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+                        <tr class="hover:bg-slate-50/50 transition-colors">
+                            <td class="py-4 px-6 text-slate-900 font-semibold">1º Trimestre (Q1)</td>
+                            <td class="py-4 px-6 text-right">R$ 310.000</td>
+                            <td class="py-4 px-6 text-right text-slate-500">R$ 115.000</td>
+                            <td class="py-4 px-6 text-right">62,9%</td>
+                            <td class="py-4 px-6 text-right text-emerald-600">+ R$ 74.400</td>
+                            <td class="py-4 px-6 text-center">
+                                <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">Atingida</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50 transition-colors">
+                            <td class="py-4 px-6 text-slate-900 font-semibold">2º Trimestre (Q2)</td>
+                            <td class="py-4 px-6 text-right">R$ 385.000</td>
+                            <td class="py-4 px-6 text-right text-slate-500">R$ 142.000</td>
+                            <td class="py-4 px-6 text-right">63,1%</td>
+                            <td class="py-4 px-6 text-right text-emerald-600">+ R$ 96.200</td>
+                            <td class="py-4 px-6 text-center">
+                                <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">Atingida</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50 transition-colors">
+                            <td class="py-4 px-6 text-slate-900 font-semibold">3º Trimestre (Q3)</td>
+                            <td class="py-4 px-6 text-right">R$ 345.500</td>
+                            <td class="py-4 px-6 text-right text-slate-500">R$ 138.000</td>
+                            <td class="py-4 px-6 text-right">60,0%</td>
+                            <td class="py-4 px-6 text-right text-amber-600">+ R$ 68.100</td>
+                            <td class="py-4 px-6 text-center">
+                                <span class="px-2.5 py-1 text-xs font-semibold bg-amber-50 text-amber-700 rounded-full border border-amber-200">Atenção</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50 transition-colors">
+                            <td class="py-4 px-6 text-slate-900 font-semibold">4º Trimestre (Q4)</td>
+                            <td class="py-4 px-6 text-right">R$ 380.000</td>
+                            <td class="py-4 px-6 text-right text-slate-500">R$ 122.300</td>
+                            <td class="py-4 px-6 text-right">67,8%</td>
+                            <td class="py-4 px-6 text-right text-emerald-600">+ R$ 114.200</td>
+                            <td class="py-4 px-6 text-center">
+                                <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">Superada</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="bg-white border-t border-slate-200 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center text-slate-500 text-sm">
+            <p>© 2026 Portfólio de Indicadores Financeiros. Desenvolvido com foco em alta performance.</p>
+            <p class="mt-2 sm:mt-0">Código aberto via <a href="https://github.com/gemerascad" target="_blank" class="text-blue-600 hover:underline font-medium">@gemerascad</a></p>
+        </div>
+    </footer>
+
+    <!-- Chart Implementations Script -->
+    <script>
+        // 1. Trend Chart (Line Chart)
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                datasets: [
+                    {
+                        label: 'Receita Bruta (R$)',
+                        data: [95000, 102000, 113000, 120000, 135000, 130000, 110000, 115500, 120000, 125000, 131000, 124000],
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.04)',
+                        fill: true,
+                        tension: 0.35,
+                        borderWidth: 3,
+                        pointRadius: 2,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Despesas Totais (R$)',
+                        data: [42000, 41000, 45000, 48000, 50000, 49000, 47000, 46000, 48000, 44000, 43000, 42300],
+                        borderColor: '#94a3b8',
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.35,
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { boxWidth: 12, font: { family: 'Inter', size: 12, weight: 500 }, color: '#475569' }
+                    },
+                    tooltip: { padding: 12, fontFamily: 'Inter' }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } } },
+                    y: { 
+                        grid: { color: '#f1f5f9' }, 
+                        ticks: { 
+                            color: '#64748b', 
+                            font: { family: 'Inter', size: 11 },
+                            callback: function(value) { return 'R$ ' + value / 1000 + 'k'; }
+                        } 
+                    }
+                }
+            }
+        });
+
+        // 2. Distribution Chart (Doughnut Chart)
+        const ctxDist = document.getElementById('distributionChart').getContext('2d');
+        new Chart(ctxDist, {
+            type: 'doughnut',
+            data: {
+                labels: ['Custos de Pessoal', 'Marketing', 'Infraestrutura', 'Impostos/Taxas', 'Outros'],
+                datasets: [{
+                    data: [45, 18, 15, 12, 10],
+                    backgroundColor: ['#3b82f6', '#8b5cf6', '#06b6d4', '#f59e0b', '#cbd5e1'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 10, padding: 14, font: { family: 'Inter', size: 11, weight: 500 }, color: '#475569' }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) { return ' ' + context.label + ': ' + context.raw + '%'; }
+                        }
+                    }
+                },
+                cutout: '75%'
+            }
+        });
+    </script>
+</body>
+</html>
