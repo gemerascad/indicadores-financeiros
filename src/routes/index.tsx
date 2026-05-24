@@ -354,12 +354,13 @@ function Dashboard() {
                 <Line
                   type="monotone"
                   dataKey="qtd"
-                  name="Qtd"
+                  name="Quantidade"
                   stroke={CHART_PALETTE[1]}
                   strokeWidth={2}
                   dot={{ r: 3 }}
                   yAxisId={0}
                 />
+
               </LineChart>
             </ResponsiveContainer>
           </ChartCard>
