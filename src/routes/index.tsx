@@ -568,7 +568,7 @@ function Dashboard() {
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
               <Bar dataKey="valor" name="Valor" radius={[6, 6, 0, 0]} fill={CHART_PALETTE[0]} />
-              <Bar dataKey="qtd" name="Qtd" radius={[6, 6, 0, 0]} fill={CHART_PALETTE[2]} />
+              <Bar dataKey="qtd" name="Quantidade" radius={[6, 6, 0, 0]} fill={CHART_PALETTE[2]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
