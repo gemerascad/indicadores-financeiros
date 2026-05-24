@@ -500,41 +500,6 @@ function Dashboard() {
             </ResponsiveContainer>
           </ChartCard>
 
-
-          <ChartCard title="Tipos de pagamento" subtitle="Top 10 por valor">
-            <ResponsiveContainer width="100%" height={Math.max(240, tipoData.length * 32)}>
-              <BarChart
-                data={tipoData}
-                layout="vertical"
-                margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
-                <XAxis
-                  type="number"
-                  stroke="var(--muted-foreground)"
-                  fontSize={11}
-                  tickFormatter={(v) => formatCompact(Number(v))}
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  stroke="var(--muted-foreground)"
-                  fontSize={11}
-                  width={150}
-                />
-                <Tooltip
-                  formatter={(v: number) => formatBRLFull(v)}
-                  contentStyle={{
-                    background: "var(--popover)",
-                    border: "1px solid var(--border)",
-                    borderRadius: 8,
-                    fontSize: 12,
-                  }}
-                />
-                <Bar dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[3]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartCard>
         </div>
 
         {/* Empresa */}
