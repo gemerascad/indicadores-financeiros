@@ -323,10 +323,10 @@ function Dashboard() {
           >
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={mesData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={11} />
                 <YAxis
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="var(--muted-foreground)"
                   fontSize={11}
                   tickFormatter={(v) => formatCompact(Number(v))}
                 />
@@ -335,8 +335,8 @@ function Dashboard() {
                     n === "valor" ? formatBRLFull(v) : formatInt(v)
                   }
                   contentStyle={{
-                    background: "hsl(var(--popover))",
-                    border: "1px solid hsl(var(--border))",
+                    background: "var(--popover)",
+                    border: "1px solid var(--border)",
                     borderRadius: 8,
                     fontSize: 12,
                   }}
@@ -387,8 +387,8 @@ function Dashboard() {
                 <Tooltip
                   formatter={(v: number) => formatInt(v)}
                   contentStyle={{
-                    background: "hsl(var(--popover))",
-                    border: "1px solid hsl(var(--border))",
+                    background: "var(--popover)",
+                    border: "1px solid var(--border)",
                     borderRadius: 8,
                     fontSize: 12,
                   }}
@@ -408,25 +408,25 @@ function Dashboard() {
                 layout="vertical"
                 margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
                 <XAxis
                   type="number"
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="var(--muted-foreground)"
                   fontSize={11}
                   tickFormatter={(v) => formatCompact(Number(v))}
                 />
                 <YAxis
                   type="category"
                   dataKey="name"
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="var(--muted-foreground)"
                   fontSize={11}
                   width={90}
                 />
                 <Tooltip
                   formatter={(v: number) => formatBRLFull(v)}
                   contentStyle={{
-                    background: "hsl(var(--popover))",
-                    border: "1px solid hsl(var(--border))",
+                    background: "var(--popover)",
+                    border: "1px solid var(--border)",
                     borderRadius: 8,
                     fontSize: 12,
                   }}
@@ -443,25 +443,25 @@ function Dashboard() {
                 layout="vertical"
                 margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
                 <XAxis
                   type="number"
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="var(--muted-foreground)"
                   fontSize={11}
                   tickFormatter={(v) => formatCompact(Number(v))}
                 />
                 <YAxis
                   type="category"
                   dataKey="name"
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="var(--muted-foreground)"
                   fontSize={11}
                   width={150}
                 />
                 <Tooltip
                   formatter={(v: number) => formatBRLFull(v)}
                   contentStyle={{
-                    background: "hsl(var(--popover))",
-                    border: "1px solid hsl(var(--border))",
+                    background: "var(--popover)",
+                    border: "1px solid var(--border)",
                     borderRadius: 8,
                     fontSize: 12,
                   }}
@@ -476,10 +476,10 @@ function Dashboard() {
         <ChartCard title="Empresas (clientes)" subtitle="Top 8 por valor total pago">
           <ResponsiveContainer width="100%" height={320}>
             <BarChart data={empresaData} margin={{ top: 8, right: 16, left: 0, bottom: 60 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis
                 dataKey="name"
-                stroke="hsl(var(--muted-foreground))"
+                stroke="var(--muted-foreground)"
                 fontSize={10}
                 interval={0}
                 angle={-25}
@@ -488,7 +488,7 @@ function Dashboard() {
                 tickFormatter={(v: string) => (v.length > 28 ? v.slice(0, 28) + "…" : v)}
               />
               <YAxis
-                stroke="hsl(var(--muted-foreground))"
+                stroke="var(--muted-foreground)"
                 fontSize={11}
                 tickFormatter={(v) => formatCompact(Number(v))}
               />
@@ -497,8 +497,8 @@ function Dashboard() {
                   n === "valor" ? formatBRLFull(v) : formatInt(v)
                 }
                 contentStyle={{
-                  background: "hsl(var(--popover))",
-                  border: "1px solid hsl(var(--border))",
+                  background: "var(--popover)",
+                  border: "1px solid var(--border)",
                   borderRadius: 8,
                   fontSize: 12,
                 }}
