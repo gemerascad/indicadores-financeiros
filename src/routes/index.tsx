@@ -324,13 +324,21 @@ function Dashboard() {
             subtitle="Valor pago por mês (ordem cronológica)"
           >
             <ResponsiveContainer width="100%" height={280}>
-              <LineChart data={mesData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+              <LineChart data={mesData} margin={{ top: 8, right: 40, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={11} />
                 <YAxis
+                  yAxisId="left"
                   stroke="var(--muted-foreground)"
                   fontSize={11}
                   tickFormatter={(v) => formatCompact(Number(v))}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  stroke="var(--muted-foreground)"
+                  fontSize={11}
+                  tickFormatter={(v) => formatInt(Number(v))}
                 />
                 <Tooltip
                   formatter={(v: number, n) =>
@@ -348,6 +356,7 @@ function Dashboard() {
                   type="monotone"
                   dataKey="valor"
                   name="Valor"
+                  yAxisId="left"
                   stroke={CHART_PALETTE[0]}
                   strokeWidth={2.5}
                   dot={{ r: 3 }}
@@ -357,10 +366,10 @@ function Dashboard() {
                   type="monotone"
                   dataKey="qtd"
                   name="Quantidade"
-                  stroke={CHART_PALETTE[1]}
+                  yAxisId="right"
+                  stroke={CHART_PALETTE[2]}
                   strokeWidth={2}
                   dot={{ r: 3 }}
-                  yAxisId={0}
                 />
 
               </LineChart>
@@ -504,27 +513,38 @@ function Dashboard() {
 
         {/* Empresa */}
         <ChartCard title="Empresas (clientes)" subtitle="Top 8 por valor total pago">
-          <ResponsiveContainer width="100%" height={320}>
-            <BarChart data={empresaData} margin={{ top: 8, right: 16, left: 0, bottom: 60 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+          <ResponsiveContainer width="100%" height={Math.max(260, empresaData.length * 44)}>
+            <BarChart
+              data={empresaData}
+              layout="vertical"
+              margin={{ top: 0, right: 16, left: 8, bottom: 0 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
               <XAxis
-                dataKey="name"
-                stroke="var(--muted-foreground)"
-                fontSize={10}
-                interval={0}
-                angle={-25}
-                textAnchor="end"
-                height={70}
-                tickFormatter={(v: string) => (v.length > 28 ? v.slice(0, 28) + "…" : v)}
-              />
-              <YAxis
+                xAxisId="valor"
+                type="number"
                 stroke="var(--muted-foreground)"
                 fontSize={11}
                 tickFormatter={(v) => formatCompact(Number(v))}
               />
+              <XAxis
+                xAxisId="qtd"
+                type="number"
+                orientation="top"
+                stroke="var(--muted-foreground)"
+                fontSize={11}
+                tickFormatter={(v) => formatInt(Number(v))}
+              />
+              <YAxis
+                type="category"
+                dataKey="name"
+                stroke="var(--muted-foreground)"
+                fontSize={11}
+                width={110}
+              />
               <Tooltip
                 formatter={(v: number, n) =>
-                  n === "valor" ? formatBRLFull(v) : formatInt(v)
+                  n === "Valor" ? formatBRLFull(v) : formatInt(v)
                 }
                 contentStyle={{
                   background: "var(--popover)",
@@ -534,8 +554,8 @@ function Dashboard() {
                 }}
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Bar dataKey="valor" name="Valor" radius={[6, 6, 0, 0]} fill={CHART_PALETTE[0]} />
-              <Bar dataKey="qtd" name="Quantidade" radius={[6, 6, 0, 0]} fill={CHART_PALETTE[2]} />
+              <Bar xAxisId="valor" dataKey="valor" name="Valor" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[0]} />
+              <Bar xAxisId="qtd" dataKey="qtd" name="Quantidade" radius={[0, 4, 4, 0]} fill={CHART_PALETTE[2]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
